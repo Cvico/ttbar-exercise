@@ -1,0 +1,18 @@
+#This is a txt file from where to read the cut applied to the selection
+# For a cut not to be considered leave it at -2 or -99 for kinematics variables
+#
+# == Cortes para muones
+Nmuon:		1
+Muon_Pt:	25
+Muon_Eta:   2.4
+# == Cortes para jets
+NJet:		3
+Jet_Pt:     25
+Jet_Eta:    2.4
+# == Cortes para b-jets
+NbJets: 	1
+bTags_WP:	2
+DR:         0.2
+# == Corte en MET
+MET:        32
+

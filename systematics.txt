@@ -1,0 +1,9 @@
+# Este fichero contiene información sobre los sistematicos
+# que se asumen para cada una de las muestras de montecarlo
+qcd:1.0
+ww:0.50
+wjets:0.50
+wz:0.50
+zz:0.50
+dy:0.15
+single_top:0.30

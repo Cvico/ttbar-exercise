@@ -1,0 +1,5 @@
+Hacer un histograma donde para cada bin anotemos la eficiencia de trigger.
+Lo mas facil es pedir 1 muon y dibujar el pt para aquellos que pasan el trigger y para los que no
+Luego hacer el ratio. La eficiencia varia mucho cerca de las zonas del pt de trigger, asi que escoger
+un binning de ese orden. Una vez escojamos el corte lo que hay que hacer es calcular la eficiencia
+tal y como dice la ecuación (4) del guión.

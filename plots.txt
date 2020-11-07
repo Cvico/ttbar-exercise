@@ -1,0 +1,27 @@
+#
+#This txt allows us to draw plots in a more easy way without 
+#modifying any content in test.py. Just modify the table below.
+#Outpath where to draw the histograms. If the directory does not exist
+#it will be created automatically in this path.
+#
+#	Histogram-> Indicates the histogram that will be drawn
+#
+Outpath: ./results/Pruebas
+MCsamples: qcd: wjets: ww: wz: zz: dy: single_top: ttbar
+colors: gray:blue:teal:LIME:red:green:yellow:weirdblue
+#MCsamples: ttbar
+#
+#
+## Annotations for the plot
+# text:			#x:	#y  				
+Tex: 50pb^{-1}(#sqrt{s}|=|7TeV):	0.6:	0.91
+Tex: #font[22]{FAEA}|#font[12]{Preliminary}:	0.1:	0.91
+Tex: 1#mu:		0.4:	0.91	 
+#
+#Histogram:	#Xlabel:		#Ylabel:	#title     			#SetLogY
+MuonPt:		p_{T}^{#mu}(GeV):	Events:		Muon|transverse|momentum:	0: 	   
+Njet:		NJets:			Events:		Number|of|Jets:			1:              
+MET:		Missing|ET:		Events:		MET:				0:              
+MuonEta:	#eta:			Events:		Pseudorapidity:			0:		
+NbJets:     NbJets:         Events:     Number|of|Jets|b:       1:
+NandBjetsCompare: (NJet,|NbJet)     :Events: :1
