@@ -11,6 +11,7 @@ class Selector:
     def __init__(self, filename = '', hist_list, savepath = ""):
         ''' Initialize a new Selector by giving the name of a sample.root file '''
         self.name = filename
+        self.hist_list = hist_list
         self.filename = self.name
         self.savepath = savepath
         if self.filename[-5:] != '.root': self.filename += '.root'
@@ -19,10 +20,11 @@ class Selector:
             if (self.name != ''): wr.warn("[Selector::constructor] WARNING: file {f} not found".format(f = self.name))
         else:
             self.CreateHistograms()
-            self.SetSystematic()
-            self.ApplySelectionCut()
-            self.Loop()
-            if self.GetSampleName() == "ttbar": self.Loop_gen()
+            print(self.histograms)
+            #self.SetSystematic()
+            #self.ApplySelectionCut()
+            #self.Loop()
+            #if self.GetSampleName() == "ttbar": self.Loop_gen()
             #self.WriteHistograms()
             #self.WriteLog()
         return
@@ -171,7 +173,10 @@ class Selector:
 
     def GetSampleName(self):
         return self.name
-
+    def create_histograms(self):
+        for hist in self.hist_list:
+            self.histograms.append(r.TH1F(self.name + hist.name, ";".join(hist.xlabel, hist.ylabel), hist.x_axis[0], hist.x_axis[1], hist.x_axis[2]))
+        return
     def CreateHistograms(self):
         ''' CREATE YOUR HISTOGRAMS HERE '''
         self.histograms = []

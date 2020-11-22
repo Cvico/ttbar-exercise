@@ -17,13 +17,6 @@ class Plotter:
             if processess[p] == "data": self.data = Selector(processes[p], hist_list, "./results")
             elif "+" in process[p]: self.signal = Selector(processes[p], hist_list, "./results")
             else backgrounds.append(Selector(processes[p], hist_list, "./results"))
-
-        # Los parametros se pasan desde la clase FAEA_Analysis
-        self.listOfSelectors = listOfSelectors
-        self.dataSelector = dataSelector
-        self.data = 'data'
-        self.Histos = Histos
-        self.colors = colors
         
         return
 
