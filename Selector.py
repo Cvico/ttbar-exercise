@@ -276,7 +276,78 @@ class Selector:
             self.weight = event.EventWeight
             self.FillHistogramsGen()      
     
-            
+    def Loop_new(self):
+        ''' Main method, used to loop over all the entries '''
+        f = r.TFile.Open(self.filename)
+        tree = f.events
+        nEvents = tree.GetEntries()
+        print
+        "Opening file {f} and looping over {n} events...".format(f=self.filename, n=nEvents)
+
+        for event in tree:
+            # Rellenamos el histograma de pesos, pesando cada uno de ellos por si mismo
+            # de esta manera obtenemos la cantidad de sucesos generados pesada a nuestra
+            # luminosidad
+
+            self.FillHistogramsWeights(event.EventWeight)
+
+            ### Pedimos 1 muon
+            if event.NMuon < self.Nmuon: continue
+
+            ### Definimos un muon a partir de su 4-momento
+            muon = r.TLorentzVector()
+            muon.SetPxPyPzE(event.Muon_Px[0], event.Muon_Py[0], event.Muon_Pz[0], event.Muon_E[0])
+
+            # Si la muestra analizada es ttbar entonces la utilizamos para calcular la eficiencia
+            # de trigger
+
+            if self.GetSampleName() == "ttbar":  #
+                # Calculamos las propiedades del muon antes de pasar el trigger
+                self.weight = event.EventWeight
+                self.muon_pt = muon.Pt()
+                self.muon_eta = muon.Eta()
+                self.FillHistogramsNoTrigg()
+
+            # Si no pasa el trigger no lo registramos para el analisis
+            if not event.triggerIsoMu24: continue
+
+            # Calculamos las propiedades del muon despues de pasar el trigger
+            self.muon_pt = muon.Pt()
+            self.muon_eta = muon.Eta()
+            # self.Njet = event.NJet
+            self.MET = (event.MET_px * event.MET_px + event.MET_py * event.MET_py) ** (0.5)
+
+            # solamente para la muestra de ttbar
+            if self.GetSampleName() == "ttbar":
+                self.weight = event.EventWeight
+                self.FillHistogramsForTrigg()
+
+                # corte de variables cinemáticas
+            if self.muon_pt < self.Muon_Pt: continue
+            if self.MET < self.event_MET: continue
+            if abs(self.muon_eta) > self.Muon_Eta: continue
+            # corte en jets y bjets
+            RecoJets = self.ObtainJetInfo(event)
+            if self.NJetsReco < self.NJet: continue
+            bJets_reco = self.CheckForBtags(event)
+            if self.Njets_B < self.NbJets: continue
+            if self.GetSampleName() == 'ttbar': self.B_taggEff(event, bJets_reco)
+
+            # aplicamos el peso en función de la cantidad de bJets que pidamos
+            peso_bJets = 1
+            if self.Njets_B >= 2:
+                peso_bJets = (0.86)
+            elif self.Njets_B == 1:
+                peso_bJets = 0.9
+
+                # aplicamos el peso total del suceso
+            self.weight = event.EventWeight * peso_bJets if not self.name == 'data' else 1
+
+            # Rellenamos los histogramas
+            self.FillNandBJetComparison()
+            self.FillHistograms()
+
+        return
     def Loop(self):
         ''' Main method, used to loop over all the entries '''
         f = r.TFile.Open(self.filename)
