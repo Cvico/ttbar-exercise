@@ -27,8 +27,6 @@ class Plotter:
     hist_list = []
     savepath = "."
     backgrounds = []
-    data = Selector()
-    signal = Selector()
     data = ''
     colors = []
     Annotations = []
