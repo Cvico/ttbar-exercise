@@ -6,10 +6,6 @@ from Selector import Selector
 import ROOT as r
 from copy import deepcopy
 import Functions as F
-#from test import FAEA_Analysis
-
-
-
 
 class Plotter:
     ''' Class to draw histograms and get info from Selector'''
