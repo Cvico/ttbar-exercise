@@ -2,12 +2,8 @@ from Selector import Selector
 from Plotter import Plotter
 import numpy as np
 import re
-from copy import deepcopy
-import Functions as F
 import ROOT as r
-from test import FAEA_Analysis
 import argparse
-import pandas as pd
 
 r.gROOT.SetBatch(1) # To work only by batch (i.e. through terminal, w/o windows)
 r.gStyle.SetOptStat(0)
