@@ -17,7 +17,7 @@ def add_parsing_options():
     return parser
 
 
-def set_list_of_selectors(mca_file):
+def read_mca(mca_file):
     ''' This method is used to set up the list of backgrounds
         used for the analysis. It is mean to read a file which
         contains, in each line, the following structure:
@@ -38,12 +38,9 @@ def set_list_of_selectors(mca_file):
     return (list_of_selectors, colors)
 
 
-
-
-def SetEnvironment(config):
-    mca_file, plot_file = config
-    list_of_selectors, colors = set_list_of_selectors(mca_file)
-
+def read_plots_file(plot_file):
+    lines = open(plot_file).readlines()
+    return histos
 
 if __name__ == "__main__":
     # Create a parser where to specify actions
@@ -53,6 +50,10 @@ if __name__ == "__main__":
     path = options.path
     mca_file = options.mca_file
     plot_file = options.plot_file
+
+    # Read the mca files
+    processes, colors = read_mca(mca_file)
+    plots = read_plots_file(plot_file)
     # Run plotter
     Plotter()
 
