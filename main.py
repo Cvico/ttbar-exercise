@@ -16,7 +16,6 @@ def add_parsing_options():
     parser.add_argument('--outpath', '-o', metavar = "outpath", dest = "outpath", default = "./Plots/", help = "outpath for results")
     return parser
 
-
 def read_mca(mca_file):
     ''' This method is used to set up the list of backgrounds
         used for the analysis. It is mean to read a file which
@@ -36,11 +35,6 @@ def read_mca(mca_file):
         list_of_selectors[line[0]] = line[1]
         colors[line[0]] = line[2] if (line[2] != "") else "isData"
     return (list_of_selectors, colors)
-
-
-def read_plots_file(plot_file):
-    lines = open(plot_file).readlines()
-    return histos
 
 if __name__ == "__main__":
     # Create a parser where to specify actions
