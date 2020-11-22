@@ -1,8 +1,18 @@
 #
-#Histogram:	       #nbins, xlow, xup            ;#Xlabel:		            #Ylabel:	#title     			        #SetLogY
-MuonPt:		        :20, 0, 200                 ;p_{T}^{#mu}(GeV):	         Events:		Muon|transverse|momentum:	0
-Njet:		        :20, 0, 200                 ;NJets:			             Events:		Number|of|Jets:			    1
-MET:		        :20, 0, 200                 ;Missing|ET:		         Events:		MET:				        0
-MuonEta:	        :20, 0, 200                 ;#eta:			             Events:		Pseudorapidity:			    0
-NbJets:             :20, 0, 200                 ;NbJets:                     Events:        Number|of|Jets|b:           1
-NandBjetsCompare:   :20, 0, 200                 ;(NJet,|NbJet) :             Events:                       :            1
+#Histogram:	       #nbins, xlow, xup           ;#Xlabel:		            #Ylabel:    #LogY
+MuonPt:            20, 0, 200                  ;p_{T}^{#mu} (GeV):         Events:     0
+MuonPt_Gen:        20, 0, 200                  ;p_{T}^{#mu} (GeV):         Events:     0
+DiMuonMass:        20, 0, 200                  ;m^{#mu#mu} (GeV):          Events':    0
+Njet:              10, 0, 10                   ;Njets:                     Events:     1
+MET:               30, 0, 200                  ;MET:                        Events:     0
+MET_Gen:           30, 0, 200                  ;MET:                        Events:     0
+MuonPt_noTrigg:    20, 20, 30                  ;P_{T}^{#MU} (GeV):          Events:     0
+MuonPt_forTrigg:   20, 20, 30                  ;P_{T}^{#MU} (GeV):          Events:     0
+MuonEta:           20 ,-3, 3                   ;#ETA:                       Events:     0
+MuonEta_noTrigg:   20 ,-3, 3                   ;#ETA:                       Events:     0
+MuonEta_forTrigg:  20 ,-3, 3                   ;#ETA:                       Events:     0
+NbJets:            5, 0, 5                     ;Nbjets:                     Events:     1
+NbJets_gen_den:    5, 0, 5                     ;Nbjets:                     Events:     1
+NbJets_gen_num:    5, 0, 5                     ;Nbjets:                     Events:     1
+NandBjetsCompare:  7, 0, 6                     ;Nbjets:                     Events:     1
+WeightsGen:        100, 0, 1                   ;xlabel:                     Events:     0
