@@ -13,7 +13,7 @@ def add_parsing_options():
     parser = argparse.ArgumentParser()
     parser.add_argument('--Path', '-P', metavar="path", dest="path", default="../", help = "Path where the ntuples are stored")
     parser.add_argument('--mca', '-m', metavar = "mca_file", dest = "mca_file", default = "./info.txt", help = "Configuration for each sample")
-    parser.add_argument('--plotfile', '-p', metavar = "plot_file", dest = "plot_file", default = "./tt_plots.txt", help = "Plots that can be printed")
+    parser.add_argument('--plotfile', metavar = "plot_file", dest = "plot_file", default = "./tt_plots.txt", help = "Plots that can be printed")
     parser.add_argument('--outpath', '-o', metavar = "outpath", dest = "outpath", default = "./Plots/", help = "outpath for results")
     return parser
 
@@ -54,11 +54,10 @@ if __name__ == "__main__":
     mca_file = options.mca_file
     plot_file = options.plot_file
 
-    # Read the mca files
+    # Read the mca and plot files
     processes, colors = read_mca(mca_file)
     hist_list = read_plot_file(plot_file)
-    print(processes)
-    print(hist_list)
-    # Run plotter
 
+    # Run plotter
+    Plotter(processes, hist_list, colors)
 
