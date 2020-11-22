@@ -14,9 +14,9 @@ class Plotter:
         #self.ResetVariables()
 
         for p in processes:
-            if processess[p] == "data": self.data = Selector(processes[p], hist_list)
-            elif "+" in process[p]: self.signal = Selector(processes[p], hist_list)
-            else backgrounds.append(Selector(processes[p], hist_list))
+            if processess[p] == "data": self.data = Selector(hist_list,processes[p])
+            elif "+" in process[p]: self.signal = Selector(hist_list,processes[p])
+            else backgrounds.append(Selector(hist_list,processes[p]))
         
         return
 
