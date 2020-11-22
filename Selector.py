@@ -285,6 +285,7 @@ class Selector:
         "Opening file {f} and looping over {n} events...".format(f=self.filename, n=nEvents)
 
         for event in tree:
+            string = ""
             # Rellenamos el histograma de pesos, pesando cada uno de ellos por si mismo
             # de esta manera obtenemos la cantidad de sucesos generados pesada a nuestra
             # luminosidad

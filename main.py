@@ -1,6 +1,7 @@
 from Selector import Selector
 from Plotter import Plotter
 import numpy as np
+from histos import histos
 import re
 import ROOT as r
 import argparse
@@ -36,6 +37,14 @@ def read_mca(mca_file):
         colors[line[0]] = line[2] if (line[2] != "") else "isData"
     return (list_of_selectors, colors)
 
+def read_plot_file(plot_file):
+    lines = open(plot_file, "r".readlines())
+    histo_list = []
+    for line in lines:
+        if line[0] == "#": continue
+        histo_list.append(histos(re.sub(r"\s+", "", line).replace(";",":").split(":")))
+
+    return histo_list
 if __name__ == "__main__":
     # Create a parser where to specify actions
     parser = add_parsing_options()
@@ -47,8 +56,9 @@ if __name__ == "__main__":
 
     # Read the mca files
     processes, colors = read_mca(mca_file)
-    plots = read_plots_file(plot_file)
+    hist_list = read_plot_file(plot_file)
+    print(processes)
+    print(hist_list)
     # Run plotter
-    Plotter()
 
 
