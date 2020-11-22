@@ -1,10 +1,8 @@
 #
-#This txt allows us to draw plots in a more easy way without 
-#modifying any content in test.py. Just modify the table below.
-#Histogram:	#Xlabel:		#Ylabel:	#title     			#SetLogY
-MuonPt:		p_{T}^{#mu}(GeV):	Events:		Muon|transverse|momentum:	0: 	   
-Njet:		NJets:			Events:		Number|of|Jets:			1:              
-MET:		Missing|ET:		Events:		MET:				0:              
-MuonEta:	#eta:			Events:		Pseudorapidity:			0:		
-NbJets:     NbJets:         Events:     Number|of|Jets|b:       1:
-NandBjetsCompare: (NJet,|NbJet)     :Events: :1
+#Histogram:	       #nbins, xlow, xup            ;#Xlabel:		            #Ylabel:	#title     			        #SetLogY
+MuonPt:		        :20, 0, 200                 ;p_{T}^{#mu}(GeV):	         Events:		Muon|transverse|momentum:	0
+Njet:		        :20, 0, 200                 ;NJets:			             Events:		Number|of|Jets:			    1
+MET:		        :20, 0, 200                 ;Missing|ET:		         Events:		MET:				        0
+MuonEta:	        :20, 0, 200                 ;#eta:			             Events:		Pseudorapidity:			    0
+NbJets:             :20, 0, 200                 ;NbJets:                     Events:        Number|of|Jets|b:           1
+NandBjetsCompare:   :20, 0, 200                 ;(NJet,|NbJet) :             Events:                       :            1
