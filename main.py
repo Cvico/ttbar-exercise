@@ -1,7 +1,7 @@
 from Selector import Selector
 from Plotter import Plotter
 import numpy as np
-from histos import histos
+from histos import Histos
 import re
 import ROOT as r
 import argparse
@@ -42,7 +42,7 @@ def read_plot_file(plot_file):
     histo_list = []
     for line in lines:
         if line[0] == "#": continue
-        histo_list.append(histos(re.sub(r"\s+", "", line).replace(";",":").split(":")))
+        histo_list.append(Histos(re.sub(r"\s+", "", line).replace(";",":").split(":")))
 
     return histo_list
 if __name__ == "__main__":
