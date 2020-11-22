@@ -13,7 +13,7 @@ class Selector:
         self.name = filename
         self.hist_list = hist_list
         self.filename = self.name
-        self.savepath = savepath
+        
         if self.filename[-5:] != '.root': self.filename += '.root'
         if not os.path.exists(self.filename): self.filename = '../files/' + self.filename
         if not os.path.exists(self.filename):
