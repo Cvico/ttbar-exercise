@@ -1,0 +1,15 @@
+QCD         : qcd           : gray
+W+Jets      : wjets         : blue
+WW          : ww            : teal
+WZ          : wz            : lime
+ZZ          : zz            : red
+Drell-Yan   : dy            : green
+tW          : single_top    : yellow
+TT+         : ttbar         : weirdblue
+data        : data
+## Annotations for the plot
+# text:			#x:	#y
+#Tex: 50pb^{-1}(#sqrt{s}|=|7TeV):	0.6:	0.91
+#Tex: #font[22]{FAEA}|#font[12]{Preliminary}:	0.1:	0.91
+#Tex: 1#mu:		0.4:	0.91
+#
