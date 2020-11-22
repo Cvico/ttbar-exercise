@@ -38,7 +38,7 @@ def read_mca(mca_file):
     return (list_of_selectors, colors)
 
 def read_plot_file(plot_file):
-    lines = open(plot_file, "r").readlines())
+    lines = open(plot_file, "r").readlines()
     histo_list = []
     for line in lines:
         if line[0] == "#": continue
