@@ -14,7 +14,7 @@ class Selector:
         self.filename = self.name
         self.savepath = savepath
         if self.filename[-5:] != '.root': self.filename += '.root'
-        if not os.path.exists(self.filename): self.filename = 'files/' + self.filename
+        if not os.path.exists(self.filename): self.filename = '../files/' + self.filename
         if not os.path.exists(self.filename):
             if (self.name != ''): wr.warn("[Selector::constructor] WARNING: file {f} not found".format(f = self.name))
         else:
