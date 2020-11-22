@@ -10,7 +10,7 @@ r.gStyle.SetOptStat(0)
 
 
 class FAEA_Analysis:
-    ''' Clase para correr los selectors y llamar a plotter'''
+    ''' Class for running the whole Analysis at once'''
     ### ==================================================
     ### Constructor
     def __init__(self, infoRun, data = ''):
@@ -19,35 +19,31 @@ class FAEA_Analysis:
         self.data = data
         counter = 0
         
-        # Imponemos los criterios de seleccion
+        # Apply selection cut
         for bck in self.backgrounds:
             self.listOfSelectors.append(Selector(bck, self.savepath))
             counter += 1
         if (self.data != ''): self.dataSelector = Selector(self.data, self.savepath)
         
-        # == Dibujamos los histogramas
-        # Le pasamos los selectors y una serie de parametros
-        # a la clase Plotter para poder representar
+        # == Draw histograms
+        # Parse selectors and other parameters to the Plotter class
         p = Plotter(self.listOfSelectors, self.dataSelector, self.Histos, self.colors)
         p.SetSavePath(self.savepath)
         p.SetAnnotations(self.Annotations)
         p.DrawHistos()
         
-        # ===== Calculamos la seccion eficaz
-        # == Establecemos como atributos los parametros
-        #    que influyen en el calculo de la seccion eficaz
+        # ===== Compute the cross-section
+        # == Set attributes and parameters and compute the final result
         self.SetParameters('MuonPt')
-        
-        # == Una vez establecidos los parametros calculamos
-        #    la seccion eficaz y su incertidumbre (sistematica)
         self.PrintXsection('MuonPt')
+
         return
     
     
     ### =================================================
-    ### Atributos
+    ### Attributes
     
-    # ========= Atributos de configuracion ======
+    # ========= Configuration attributes ======
     infoRun = ''
     data = ''
     savepath = ''
@@ -58,7 +54,7 @@ class FAEA_Analysis:
     Histos = []
     Annotations = []
    
-    ### ========== Parametros para el calculo de xsection ===
+    ### ========== X-section computation parameters ===
     A = 1
     BR = 0.09732
     b_tagEff = 1
@@ -70,28 +66,26 @@ class FAEA_Analysis:
     Nttbar = 0
     xsection = 0
     
-    ### =========== Variaciones sistematicas de los parametros
+    ### =========== Systematic variations
     sist_L = 0.1
-    sist_triggerEff = 0 # Inicializado a 0, depende de la propia eficiencia
-    sist_A = 0 # Inicializado a 0
-    sist_bTag = 0 #Inicializado a 0
+    sist_triggerEff = 0
+    sist_A = 0
+    sist_bTag = 0
     
-    ### =========== Listas donde guardaremos las variaciones
-    #               sistematicas up, down y total
+    ### =========== Lists for storing variations
     systematics_up = []
     systematics_down = []
     systematics_total = []
     
-    ### ============ Diccionario de colores disponibles
-    #                para las representaciones de histogramas
+    ### ============ Beauty stuff
     
     color_dict = {'white':0, 'black':1, 'red':2, 'lime':3,
     'blue':4, 'yellow':5, 'violet':6, 'cyan':7, 'green':8,
     'weirdblue':9, 'gray':17, 'ligtblue':38, 'teal':r.kTeal}   
     colors = []
     
-    ### Metodos
-    # ============ Metodos de configuracion
+    ### Methods
+    # ============ Configuration methods
     def SetEnvironment(self, config):
         '''This method sets the environment of datapaths and outpaths'''
         Info = F.LoadTxtFile(self.infoRun) 
