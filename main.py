@@ -34,7 +34,7 @@ def read_mca(mca_file):
         if line[0] == "#": continue # comment line
         line = re.sub(r"\s+", "", line).split(":") #remove spaces and split between regexp ":"
         list_of_selectors[line[0]] = line[1]
-        colors[line[0]] = line[2] if (line[2] != "") else "isData"
+        colors[line[0]] = line[2] if (line[0] != "data") else "isData"
     return (list_of_selectors, colors)
 
 def read_plot_file(plot_file):
