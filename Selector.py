@@ -8,7 +8,7 @@ class Selector:
     ''' Class to do an event selection'''
     ### =============================================
     ### Constructor
-    def __init__(self, filename = '', savepath = ""):
+    def __init__(self, filename = '', hist_list, savepath = ""):
         ''' Initialize a new Selector by giving the name of a sample.root file '''
         self.name = filename
         self.filename = self.name
