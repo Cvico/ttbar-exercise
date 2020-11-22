@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import warnings as wr
-import numpy as np
-import os
 from Selector import Selector
 import ROOT as r
 from copy import deepcopy
@@ -11,10 +9,15 @@ class Plotter:
     ''' Class to draw histograms and get info from Selector'''
     ### =============================================
     ### Constructor
-    def __init__(self, listOfSelectors, dataSelector, Histos, colors):
+    def __init__(self, processes, hist_list, colors):
         ''' Initialize a new plotter... give a list with all names of MC samples and the name of the data sample '''
         #self.ResetVariables()
-        
+
+        for p in processes:
+            if processess[p] == "data": self.data = Selector(processes[p], hist_list, "./results")
+            elif "+" in process[p]: self.signal = Selector(processes[p], hist_list, "./results")
+            else backgrounds.append(Selector(processes[p], hist_list, "./results"))
+
         # Los parametros se pasan desde la clase FAEA_Analysis
         self.listOfSelectors = listOfSelectors
         self.dataSelector = dataSelector
@@ -27,9 +30,12 @@ class Plotter:
 
     ### =============================================
     ### Atributos de configuracion
+    processess = ""
+    hist_list = []
     savepath = "."
-    listOfSelectors = []
-    dataSelector = Selector()
+    backgrounds = []
+    data = Selector()
+    signal = Selector()
     data = ''
     colors = []
     Annotations = []
