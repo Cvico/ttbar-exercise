@@ -13,5 +13,5 @@ class Histos:
         self.xlabel      = info[2]
         self.ylabel      = info[3]
         self.logy        = info[4]
-        return 0
+        return 
 
