@@ -10,7 +10,7 @@ class Selector:
     ### Constructor
     def __init__(self, filename, hist_list):
         ''' Initialize a new Selector by giving the name of a sample.root file '''
-        self.name = filename if filename else raise RuntimeError("[ERROR]: Empty filename")
+        self.name = filename if filename = '' else raise RuntimeError("[ERROR]: Empty filename")
         self.hist_list = hist_list
         self.filename = self.name
         self.savepath = savepath
